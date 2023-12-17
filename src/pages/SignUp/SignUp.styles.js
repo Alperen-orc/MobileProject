@@ -1,7 +1,6 @@
 import { StyleSheet } from "react-native";
 import { PrimaryColor,SecondaryColor,btnTextPrimary } from "../../../styles/themes";
 
-
 export default StyleSheet.create({
     container: {
         alignItems: 'center',
@@ -24,9 +23,4 @@ export default StyleSheet.create({
         borderRadius: 50,
         marginBottom: 20,
       },
-      btnTextPrimary: {
-        color: btnTextPrimary,
-        fontSize: 16,
-      },
-    
 })

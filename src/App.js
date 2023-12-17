@@ -1,6 +1,12 @@
 import 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View,SafeAreaView } from 'react-native';
+import { Text,Image,View } from 'react-native';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { faHome, faUser, faHeart } from '@fortawesome/free-solid-svg-icons';
+import {   
+  faUser as faUserEmpty,
+  faHeart as faHeartEmpty, } from '@fortawesome/free-regular-svg-icons';
+
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -9,6 +15,7 @@ import Detail from "./pages/Detail";
 import Favorites from "./pages/Favorites"
 import Product from "./pages/Product"
 import Login from "./pages/Login"
+import SignUp from './pages/SignUp';
 import Profile from "./pages/Profile"
 
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -37,7 +44,11 @@ const ProfileStack=()=>{
 
 const HomeStack=()=>{
   return(
-    <Stack.Navigator>
+    <Stack.Navigator options={{headerShown:false}}>
+      <Stack.Screen name='LoginScreen' component={Login} options={{headerShown:false}} >
+        </Stack.Screen >
+        <Stack.Screen name='SignUpScreen' component={SignUp} options={{headerShown:false}} >
+        </Stack.Screen >
       <Stack.Screen name='ProductScreen' component={Product} options={{headerShown:false}} >
         </Stack.Screen >
 
@@ -52,23 +63,56 @@ const App=()=>{
     <NavigationContainer>
       <Tab.Navigator>
         <Tab.Screen name='Home' component={HomeStack} options={{
-          title:"Home",
-          headerTitleAlign:"center",
-          headerStyle:{backgroundColor:"white"},
-          headerTintColor:"orange",
-        }}></Tab.Screen>
+            tabBarLabel: ({focused, color, size}) => (
+              <Text
+                style={{
+                  color: '#000',
+                  fontSize: 10,
+                }}>
+                Home
+              </Text>
+            ),
+            tabBarIcon: ({focused}) => (
+              <>
+                {focused ? (
+                  <FontAwesomeIcon icon={faHome} />
+                ) : (
+                  <Image
+                    style={{width: 20, height: 20}}
+                    source={require('../assets/icons/home.png')}
+                  />
+                )}
+              </>
+            ),
+          }}></Tab.Screen>
         <Tab.Screen name='Favorites' component={FavoritesStack} options={{
-          title:"Favorites",
-          headerTitleAlign:"center",
-          headerStyle:{backgroundColor:"white"},
-          headerTintColor:"orange",
-        }}></Tab.Screen>
+            tabBarLabel: ({focused, color, size}) => (
+              <Text
+                style={{
+                  color: '#000',
+                  fontSize: 10,
+                }}>
+                Favorites
+              </Text>
+            ),
+            tabBarIcon: ({focused}) => (
+              <FontAwesomeIcon icon={focused ? faHeart : faHeartEmpty} />
+            ),
+          }}></Tab.Screen>
         <Tab.Screen name='Profile' component={ProfileStack} options={{
-          title:"Profile",
-          headerTitleAlign:"center",
-          headerStyle:{backgroundColor:"white"},
-          headerTintColor:"orange",
-        }}></Tab.Screen>
+            tabBarLabel: ({focused, color, size}) => (
+              <Text
+                style={{
+                  color: '#000',
+                  fontSize: 10,
+                }}>
+                Profile
+              </Text>
+            ),
+            tabBarIcon: ({focused}) => (
+              <FontAwesomeIcon icon={focused ? faUser : faUserEmpty} />
+            ),
+          }}></Tab.Screen>
       </Tab.Navigator>
     </NavigationContainer>
   );
