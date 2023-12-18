@@ -4,14 +4,28 @@ import Input from "../../components/Input"
 import styles from "./SignUp.styles"
 import { faUser,faLock,faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
+import {auth} from "../../database/firebase"
+import { createUserWithEmailAndPassword,sendEmailVerification } from "firebase/auth";
+
 const SignUp = ({navigation}) => {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    let [name, setName] = useState('');
+    let [email, setEmail] = useState('');
+    let [password, setPassword] = useState('');
+    let [confirmPassword, setconfirmPassword] = useState('');
+
   
-    const onSubmit = async () => {
-      print("Alperen")
-    };
+    let signUp = () => {
+      if (password === confirmPassword) {
+        createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          sendEmailVerification(auth.currentUser);
+          navigation.navigate("ProductScreen", { user: userCredential.user });
+        })
+        .catch((error) => {
+          setValidationMessage(error.message);
+        });
+      }
+    }
   
     return (
       <View style={styles.container}>
@@ -49,6 +63,13 @@ const SignUp = ({navigation}) => {
             placeholder="Enter password"
             icon={faLock}
           />
+          <Input
+            password={true}
+            text={confirmPassword}
+            setText={setconfirmPassword}
+            placeholder="Enter password"
+            icon={faLock}
+          />
   
           <Pressable
             style={{alignSelf: 'flex-end', marginVertical: 10}}
@@ -68,7 +89,7 @@ const SignUp = ({navigation}) => {
             onPress={() => {
               // Register();
               // navigation.navigate('Dashboard', {parama: [], auth: true});
-              onSubmit();
+              signUp();
             }}>
             <Text style={{color: '#fff'}}>Submit</Text>
           </TouchableOpacity>

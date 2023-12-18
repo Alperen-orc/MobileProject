@@ -3,15 +3,33 @@ import { View,Text,Image,Pressable,TouchableOpacity,ScrollView } from "react-nat
 import Input from "../../components/Input"
 import styles from "./Login.styles"
 
+import {auth} from "../../database/firebase"
+import { signInWithEmailAndPassword,onAuthStateChanged } from "firebase/auth";
+
 import { faUser,faLock } from "@fortawesome/free-solid-svg-icons";
 
 const Login = ({navigation}) => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    let [errorMessage, setErrorMessage] = useState("");
+    let [email, setEmail] = useState('');
+    let [password, setPassword] = useState('');
   
-    const onSubmit = async () => {
-      print("Alperen")
-    };
+    let login = () => {
+      if (email !== "" && password !== "") {
+        signInWithEmailAndPassword(auth, email, password)
+          .then((userCredential) => {
+            navigation.navigate("DashboardScreen", { user: userCredential.user });
+            setErrorMessage("");
+            setEmail("");
+            setPassword("");
+          })
+          .catch((error) => {
+
+            setErrorMessage(error.message)
+          });
+      } else {
+        setErrorMessage("Please enter an email and password");
+      }
+    }
   
     return (
       <View style={styles.container}>
@@ -61,7 +79,7 @@ const Login = ({navigation}) => {
             </Text>
           </Pressable>
   
-          <TouchableOpacity style={styles.primaryBtn} onPress={() => onSubmit()}>
+          <TouchableOpacity style={styles.primaryBtn} onPress={() => login()}>
             <Text style={{...styles.btnTextPrimary, color: '#fff'}}>Submit</Text>
           </TouchableOpacity>
         </ScrollView>

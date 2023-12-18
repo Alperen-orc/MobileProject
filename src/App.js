@@ -17,6 +17,7 @@ import Product from "./pages/Product"
 import Login from "./pages/Login"
 import SignUp from './pages/SignUp';
 import Profile from "./pages/Profile"
+import Dashboard from "./pages/Dashboard"
 
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -48,6 +49,8 @@ const HomeStack=()=>{
       <Stack.Screen name='LoginScreen' component={Login} options={{headerShown:false}} >
         </Stack.Screen >
         <Stack.Screen name='SignUpScreen' component={SignUp} options={{headerShown:false}} >
+        </Stack.Screen >
+        <Stack.Screen name='DashboardScreen' component={Dashboard} options={{headerShown:false}} >
         </Stack.Screen >
       <Stack.Screen name='ProductScreen' component={Product} options={{headerShown:false}} >
         </Stack.Screen >
