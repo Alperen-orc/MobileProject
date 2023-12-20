@@ -42,7 +42,6 @@ export default StyleSheet.create({
       },
     
       name: {
-        fontFamily: 'Poppins-Bold',
         fontSize: 30,
         color: '#fff',
         textShadowColor: 'rgba(0, 0, 0, 0.25)',
@@ -51,7 +50,6 @@ export default StyleSheet.create({
       },
     
       description: {
-        fontFamily: 'Poppins-Regular',
         fontSize: 14,
         color: '#fff',
         textShadowColor: 'rgba(0, 0, 0, 0.25)',
@@ -60,7 +58,6 @@ export default StyleSheet.create({
       },
     
       price: {
-        fontFamily: 'Poppins-SemiBold',
         alignSelf: 'flex-end',
         backgroundColor: '#eee',
         paddingHorizontal: 15,

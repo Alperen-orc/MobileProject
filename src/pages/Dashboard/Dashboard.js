@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from "react";
+import React,{useState,useEffect,useCallback} from "react";
 import { View,Text,ScrollView,TextInput,Pressable,TouchableOpacity,BackHandler} from "react-native";
 
 import ProductGrid from "../../components/Product/ProductGrid";
@@ -7,12 +7,14 @@ import ProductCarousel from "../../components/Product/ProductCarousel";
 
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { useFonts } from 'expo-font';
+import * as SplashScreen from 'expo-splash-screen';
 import styles from "./Dashboard.styles"
 
 
 
 const Dashboard=({navigation})=>{
-    const [searching, setSearching] = useState(false);
+  const [searching, setSearching] = useState(false);
   const [searchText, setSearchText] = useState('');
   const [searched, setSearched] = useState(false);
 
@@ -33,6 +35,20 @@ const Dashboard=({navigation})=>{
       );
     };
   }, []);
+
+  const [fontsLoaded,fontError] = useFonts({
+    'Poppins-SemiBold': require('../../../assets/fonts/Poppins-SemiBold.ttf'),
+
+  });
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded || fontError) {
+      await SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded, fontError]);
+
+  if (!fontsLoaded && !fontError) {
+    return null;
+  }
 
     return(
         <View>
@@ -63,12 +79,12 @@ const Dashboard=({navigation})=>{
             </>
           ) : (
             <>
-              <Text style={styles.heading}>Explore</Text>
+              <Text style={[styles.heading,{fontFamily:"Poppins-SemiBold"}]}>Explore</Text>
               {/* <Categories /> */}
               <ProductCarousel navigation={navigation} />
-              <Text style={styles.heading}>Popular Products</Text>
+              <Text style={[styles.heading,{fontFamily:"Poppins-SemiBold"}]}>Popular Products</Text>
               <ProductSlider navigation={navigation} />
-              <Text style={styles.heading}>Top Picks For You</Text>
+              <Text style={[styles.heading,{fontFamily:"Poppins-SemiBold"}]}>Top Picks For You</Text>
               <ProductSlider navigation={navigation} />
               <View style={{height: 100}}></View>
             </>

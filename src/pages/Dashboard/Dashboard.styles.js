@@ -34,7 +34,6 @@ export default StyleSheet.create({
         paddingHorizontal: 25,
       },
     searchText: {
-        fontFamily: 'Poppins-Regular',
         margin: 20,
         marginBottom: 0,
         fontSize: 16,
@@ -42,7 +41,6 @@ export default StyleSheet.create({
     heading: {
         marginVertical: 10,
         marginHorizontal: 20,
-        fontFamily: 'Poppins-SemiBold',
         fontSize: 24,
         color: '#21282F',
       },      

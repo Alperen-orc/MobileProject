@@ -1,6 +1,9 @@
 import { StyleSheet } from "react-native";
 
+
 export default StyleSheet.create({
+
+  
     productSlider: {
         flexDirection: 'row',
         },
@@ -14,13 +17,5 @@ export default StyleSheet.create({
         height: 150,
         resizeMode: 'cover',
       },
-    
-    sliderText: {
-        fontFamily: 'Poppins-SemiBold',
-      },
-    
-    sliderPrice: {
-        fontFamily: 'Poppins-Regular',
-      },  
       
 })
