@@ -10,6 +10,7 @@ import {
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import SideMenu from '@chakrahq/react-native-side-menu';
 
 import Detail from "./pages/Detail";
 import Favorites from "./pages/Favorites"
@@ -18,6 +19,12 @@ import Login from "./pages/Login"
 import SignUp from './pages/SignUp';
 import Profile from "./pages/Profile"
 import Dashboard from "./pages/Dashboard"
+import Wishlist from './pages/Wishlist';
+import Cart from './pages/Cart';
+import Category from './pages/Category'; 
+import Order from './pages/Order';
+import Orders from './pages/Orders';
+import Tutorial from './pages/Onboarding';
 
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -26,10 +33,11 @@ const Stack=createNativeStackNavigator();
 const Drawer=createDrawerNavigator();
 const Tab=createBottomTabNavigator();
 
-const FavoritesStack=()=>{
+
+const WishlistStack=()=>{
   return(
     <Stack.Navigator>
-      <Stack.Screen name='FavoritesScreen' component={Favorites} options={{headerShown:false}}>
+      <Stack.Screen name='WishlistScreen' component={Wishlist} options={{headerShown:false}}>
         </Stack.Screen>
     </Stack.Navigator>
   );
@@ -37,8 +45,11 @@ const FavoritesStack=()=>{
 
 const ProfileStack=()=>{
   return(
-    <Stack.Navigator>
+    <Stack.Navigator options={{headerShown:false}} initialRouteName='Wishlist'>
       <Stack.Screen name='ProfileScreen' component={Profile} options={{headerShown:false}}></Stack.Screen>
+      <Stack.Screen name='OrderScreen' component={Order} options={{headerShown:false}}></Stack.Screen>
+      <Stack.Screen name='OrdersScreen' component={Orders} options={{headerShown:false}}></Stack.Screen>
+
     </Stack.Navigator>
   );
 }
@@ -57,6 +68,21 @@ const HomeStack=()=>{
 
         <Stack.Screen name='DetailScreen' component={Detail} options={{headerShown:false}}>
         </Stack.Screen>
+    </Stack.Navigator>
+  );
+}
+
+const CartStack=()=>{
+  return(
+    <Stack.Navigator options={{headerShown:false}} initialRouteName='WishlistScreen'>
+      <Stack.Screen name='CartScreen' component={Cart} options={{headerShown:false}} >
+        </Stack.Screen >
+        <Stack.Screen name='WishlistScreen' component={Wishlist} options={{headerShown:false}} >
+        </Stack.Screen >
+        <Stack.Screen name='ProductScreen' component={Product} options={{headerShown:false}} >
+        </Stack.Screen >
+      <Stack.Screen name='CategoryScreen' component={Category} options={{headerShown:false}} >
+        </Stack.Screen >
     </Stack.Navigator>
   );
 }
@@ -88,14 +114,14 @@ const App=()=>{
               </>
             ),
           }}></Tab.Screen>
-        <Tab.Screen name='Favorites' component={FavoritesStack} options={{
+        <Tab.Screen name='Wishlist' component={CartStack} options={{
             tabBarLabel: ({focused, color, size}) => (
               <Text
                 style={{
                   color: '#000',
                   fontSize: 10,
                 }}>
-                Favorites
+                Wishlist
               </Text>
             ),
             tabBarIcon: ({focused}) => (

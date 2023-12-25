@@ -11,7 +11,7 @@ import * as SplashScreen from 'expo-splash-screen';
 
 import styles from "./Cart.styles"
 
-export const Cart = observer(({navigation}) => {
+const Cart = observer(({navigation}) => {
     const {
       state: {cart},
     } = ProductStore;
@@ -61,7 +61,7 @@ export const Cart = observer(({navigation}) => {
                 alignSelf: 'center',
                 marginBottom: 20,
               }}
-              source={require('../../assets/icons/empty-cart.png')}
+              source={require('../../../assets/icons/empty-cart.png')}
             />
             <Text
               style={{
@@ -162,4 +162,6 @@ export const Cart = observer(({navigation}) => {
       </View>
     );
   };
+
+  export default Cart;
   
