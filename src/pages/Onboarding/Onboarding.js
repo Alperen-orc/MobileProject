@@ -1,8 +1,26 @@
-import React from "react";
+import React,{useCallback} from "react";
 import { View,Text,Image } from "react-native";
 import Onboarding from "react-native-onboarding-swiper";
+import { useFonts } from 'expo-font';
+import * as SplashScreen from 'expo-splash-screen';  
 
 const Tutorial = ({navigation}) => {
+
+  const [fontsLoaded,fontError] = useFonts({
+    'Poppins-SemiBold': require('../../../assets/fonts/Poppins-SemiBold.ttf'),
+    'Poppins-Regular': require('../../../assets/fonts/Poppins-Regular.ttf'),
+
+  });
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded || fontError) {
+      await SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded, fontError]);
+
+  if (!fontsLoaded && !fontError) {
+    return null;
+  }
+
     return (
       <Onboarding
         onSkip={() => navigation.navigate('LoginScreen')}

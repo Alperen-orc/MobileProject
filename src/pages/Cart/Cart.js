@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from "react";
+import React,{useState,useEffect,useCallback} from "react";
 import { View,ScrollView,Image,Text,Pressable,TouchableOpacity } from "react-native";
 
 import { ProductStore } from "../../store/product";
@@ -83,7 +83,7 @@ const Cart = observer(({navigation}) => {
             </Text>
             <TouchableOpacity
               style={styles.secondaryBtn}
-              onPress={() => navigation.navigate('Dashboard')}>
+              onPress={() => navigation.navigate('DashboardScreen')}>
               <Text
                 style={{
                   color: '#000',

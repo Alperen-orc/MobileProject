@@ -2,6 +2,7 @@ import React,{useState} from "react";
 import { View,Text,Image,Pressable,TouchableOpacity,ScrollView } from "react-native";
 import Input from "../../components/Input"
 import styles from "./Login.styles"
+import { AuthStore } from "../../store/auth";
 
 import {auth} from "../../database/firebase"
 import { signInWithEmailAndPassword,onAuthStateChanged } from "firebase/auth";
@@ -15,9 +16,10 @@ const Login = ({navigation}) => {
   
     let login = () => {
       if (email !== "" && password !== "") {
+        AuthStore.login({email: email, password: password});
         signInWithEmailAndPassword(auth, email, password)
           .then((userCredential) => {
-            navigation.navigate("DashboardScreen", { user: userCredential.user });
+            navigation.navigate("Main", { user: userCredential.user });
             setErrorMessage("");
             setEmail("");
             setPassword("");

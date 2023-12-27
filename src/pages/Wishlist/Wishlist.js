@@ -81,7 +81,7 @@ const Wishlist = observer(({navigation}) => {
         <Pressable
           onPress={() => {
             setProduct(product);
-            navigation.navigate('Product');
+            navigation.navigate('ProductScreen');
           }}>
           <Image
             style={{width: 100, height: 150, borderRadius: 5}}
