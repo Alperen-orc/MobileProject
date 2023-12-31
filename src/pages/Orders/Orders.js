@@ -41,7 +41,7 @@ const Orders = ({navigation}) => {
         </View>
         <ScrollView style={{padding: 20}}>
           <Pressable
-            onPress={() => navigation.navigate('Order')}
+            onPress={() => navigation.navigate('OrderScreen')}
             style={styles.orderItem}>
             <View>
               <Text style={styles.orderNo}>Order Number. 111</Text>
@@ -69,7 +69,7 @@ const Orders = ({navigation}) => {
           </Pressable>
   
           <Pressable
-            onPress={() => navigation.navigate('Order')}
+            onPress={() => navigation.navigate('OrderScreen')}
             style={styles.orderItem}>
             <View>
               <Text style={styles.orderNo}>Order Number. 111</Text>

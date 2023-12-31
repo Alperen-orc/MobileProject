@@ -86,7 +86,7 @@ const Wishlist = observer(({navigation}) => {
           <Image
             style={{width: 100, height: 150, borderRadius: 5}}
             source={{
-              uri: product.imgs[0],
+              uri: product.Image[0],
             }}
           />
         </Pressable>
@@ -96,8 +96,8 @@ const Wishlist = observer(({navigation}) => {
             justifyContent: 'space-between',
           }}>
           <View>
-            <Text style={styles.wishlistName}>{product.name}</Text>
-            <Text style={styles.wishlistPrice}>${product.price}</Text>
+            <Text style={styles.wishlistName}>{product.Name}</Text>
+            <Text style={styles.wishlistPrice}>${product.Price}</Text>
           </View>
   
           <TouchableOpacity

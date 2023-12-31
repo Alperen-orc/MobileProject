@@ -49,7 +49,7 @@ const ProductCarousel = observer(({navigation}) => {
           }}
           style={styles.item}>
           <ParallaxImage
-            source={{uri: item.imgs[0]}}
+            source={{uri: item.Image[0]}}
             containerStyle={styles.imageContainer}
             style={styles.image}
             parallaxFactor={0.4}
@@ -58,14 +58,14 @@ const ProductCarousel = observer(({navigation}) => {
   
           <View onLayout={onLayoutRootView} style={styles.details}>
             <View>
-              <Text style={[styles.name,{fontFamily:"Poppins-Bold"}]}>{item.name}</Text>
+              <Text style={[styles.name,{fontFamily:"Poppins-Bold"}]}>{item.Name}</Text>
               <Text style={[styles.description,{fontFamily:"Poppins-Regular"}]}>
                 {item.description.slice(0, 200)}...
               </Text>
             </View>
   
             <View style={[styles.price,{fontFamily:"Poppins-SemiBold"}]}>
-              <Text style={{fontSize: 16}}>${item.price}</Text>
+              <Text style={{fontSize: 16}}>${item.Price}</Text>
             </View>
           </View>
         </Pressable>

@@ -19,7 +19,13 @@ const Login = ({navigation}) => {
         AuthStore.login({email: email, password: password});
         signInWithEmailAndPassword(auth, email, password)
           .then((userCredential) => {
-            navigation.navigate("Main", { user: userCredential.user });
+            const user = userCredential.user;
+            if (user.email === 'alperen.oruc@ogr.sakarya.edu.tr' && password === 'b201210047') {
+              navigation.navigate("AdminScreen", { user: user });
+            } else {
+              // Diğer durumlar için normal yönlendirme
+              navigation.navigate("Main", { user: user });
+            }
             setErrorMessage("");
             setEmail("");
             setPassword("");

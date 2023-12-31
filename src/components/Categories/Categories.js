@@ -46,6 +46,4 @@ const Categories = observer(() => {
       </ScrollView>
     );
   });
-
-  export default Categories;
-  
+export default Categories;

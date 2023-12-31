@@ -63,7 +63,7 @@ const Menu = ({navigationRef}) => {
   
           <TouchableOpacity
             style={styles.menuOption}
-            onPress={() => navigationRef.navigate('OrdersScreen')}>
+            onPress={() => navigationRef.navigate('CrudScreen')}>
             <FontAwesomeIcon icon={faCheckCircle} />
             <Text style={styles.menuText}>Orders</Text>
             <FontAwesomeIcon color="#ccc" icon={faChevronRight} />

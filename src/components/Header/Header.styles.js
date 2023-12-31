@@ -11,7 +11,6 @@ export default StyleSheet.create({
       headerText: {
         color: '#000',
         fontSize: 20,
-        fontFamily: 'Poppins-Bold',
         marginTop: 5,
       },
 })

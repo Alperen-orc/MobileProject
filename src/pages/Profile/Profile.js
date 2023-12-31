@@ -24,13 +24,7 @@ const Profile = ({navigation}) => {
     return (
       <View>
         <View style={styles.profile}>
-          <Image
-            style={{width: 150, height: 150}}
-            source={{
-              uri: 'https://dl.memuplay.com/new_market/img/com.vicman.newprofilepic.icon.2022-06-07-21-33-07.png',
-            }}
-          />
-          <Text style={[styles.profileName,{fontFamily:"Poppins-Regular"}]}>Musabbiha Noor</Text>
+          <Text style={[styles.profileName,{fontFamily:"Poppins-Regular"}]}>Alperen Oruç</Text>
         </View>
   
         <View style={styles.menuOptions}>

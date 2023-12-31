@@ -19,7 +19,7 @@ const SignUp = ({navigation}) => {
         createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           sendEmailVerification(auth.currentUser);
-          navigation.navigate("ProductScreen", { user: userCredential.user });
+          navigation.navigate("Main", { user: userCredential.user });
         })
         .catch((error) => {
           setValidationMessage(error.message);

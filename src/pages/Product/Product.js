@@ -9,6 +9,7 @@ import {
      faCartShopping } from "@fortawesome/free-solid-svg-icons";
      
 import { ProductStore } from "../../store/product";
+import { auth,db } from "../../database/firebase";
 import { observer } from "mobx-react";  
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';   
@@ -45,7 +46,7 @@ const Product = observer(() => {
     const PaginationView = () => {
       return (
         <Pagination
-          dotsLength={product.imgs.length}
+          dotsLength={product.Image.length}
           activeDotIndex={activeSlide}
           containerStyle={{marginTop: -50}}
           dotStyle={{
@@ -86,7 +87,7 @@ const Product = observer(() => {
           {/* <Header heading="Product" /> */}
   
           <Carousel
-            data={product.imgs}
+            data={product.Image}
             renderItem={renderItem}
             sliderWidth={screenWidth}
             sliderHeight={screenWidth}
@@ -106,7 +107,7 @@ const Product = observer(() => {
               borderWidth: 1,
               borderColor: '#ccc',
               borderRadius: 50,
-              top: product.imgs.length > 1 ? -50 : -20,
+              top: product.Image.length > 1 ? -50 : -20,
               left: 280,
               justifyContent: 'center',
               alignItems: 'center',
@@ -128,15 +129,15 @@ const Product = observer(() => {
                     fontSize: 24,
                     fontFamily: 'Poppins-Regular',
                   }}>
-                  {product.name}
+                  {product.Name}
                 </Text>
               </View>
               <Text style={{fontFamily: 'Poppins-Light', alignSelf: 'flex-end'}}>
-                ${product.price}
+                ${product.Price}
               </Text>
             </View>
             <Text style={{fontFamily: 'Poppins-Light', paddingBottom: 100}}>
-              {product.description}
+              {product.Description}
             </Text>
           </View>
         </ScrollView>

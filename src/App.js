@@ -15,7 +15,6 @@ import { observer } from 'mobx-react';
 import { AuthStore } from './store/auth';
 
 import Detail from "./pages/Detail";
-import Favorites from "./pages/Favorites"
 import Product from "./pages/Product"
 import Login from "./pages/Login"
 import SignUp from './pages/SignUp';
@@ -29,6 +28,8 @@ import Orders from './pages/Orders';
 import Tutorial from './pages/Onboarding';
 import Menu from './components/Menu';
 import Header from './components/Header';
+import Crud from './pages/Crud';
+import Admin from './pages/Admin';
 
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -156,7 +157,13 @@ const App = observer(() => {
                   headerShown: false,
                 }}
                 initialRouteName="Main">
-                <Stack.Screen name="Main" component={Tabs} />
+                {/* <Stack.Screen name="Main" component={Tabs} /> */}
+                <Stack.Screen name='DashboardScreen' component={Dashboard} options={{headerShown:false}} ></Stack.Screen >
+                <Stack.Screen name='WishlistScreen' component={Wishlist} options={{headerShown:false}} ></Stack.Screen >
+                <Stack.Screen name='CartScreen' component={Cart} options={{headerShown:false}} ></Stack.Screen >
+                <Stack.Screen name='OrderScreen' component={Order} options={{headerShown:false}}></Stack.Screen>
+                <Stack.Screen name='CrudScreen' component={Crud} options={{headerShown:false}}></Stack.Screen>
+                <Stack.Screen name='CategoryScreen' component={Category} options={{headerShown:false}} ></Stack.Screen >
               </Stack.Navigator>
             </NavigationContainer>
           </SideMenu>
@@ -169,9 +176,11 @@ const App = observer(() => {
                 headerShown: false,
               }}
               initialRouteName="OnboardingScreen">
+              <Stack.Screen name="AdminScreen" component={Admin} />
               <Stack.Screen name="OnboardingScreen" component={Tutorial} />
               <Stack.Screen name="SignUpScreen" component={SignUp} />
               <Stack.Screen name="LoginScreen" component={Login} />
+              {/* <Stack.Screen name="Main" component={Tabs} /> */}
             </Stack.Navigator>
           </NavigationContainer>
         </>

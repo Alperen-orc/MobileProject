@@ -1,5 +1,5 @@
 import React,{useState,useEffect,useCallback} from "react";
-import { View,Text,ScrollView,TextInput,Pressable,TouchableOpacity,BackHandler} from "react-native";
+import { View,Text,ScrollView,TextInput,FlatList,TouchableOpacity,BackHandler} from "react-native";
 
 import ProductGrid from "../../components/Product/ProductGrid";
 import ProductSlider from "../../components/Product/ProductSlider";
@@ -79,12 +79,12 @@ const Dashboard=({navigation})=>{
             </>
           ) : (
             <>
-              <Text style={[styles.heading,{fontFamily:"Poppins-SemiBold"}]}>Explore</Text>
+              <Text style={[styles.heading,{fontFamily:"Poppins-SemiBold"}]}>Keşfet</Text>
               {/* <Categories /> */}
               <ProductCarousel navigation={navigation} />
-              <Text style={[styles.heading,{fontFamily:"Poppins-SemiBold"}]}>Popular Products</Text>
+              <Text style={[styles.heading,{fontFamily:"Poppins-SemiBold"}]}>Popüler Ürünler</Text>
               <ProductSlider navigation={navigation} />
-              <Text style={[styles.heading,{fontFamily:"Poppins-SemiBold"}]}>Top Picks For You</Text>
+              <Text style={[styles.heading,{fontFamily:"Poppins-SemiBold"}]}>Senin İçin Önerilenler</Text>
               <ProductSlider navigation={navigation} />
               <View style={{height: 100}}></View>
             </>

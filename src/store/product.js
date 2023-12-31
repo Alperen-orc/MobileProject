@@ -1,14 +1,16 @@
 import { ToastAndroid } from "react-native";
-import { makeObservable,observable,action } from "mobx";
+import { makeObservable,observable,action,runInAction } from "mobx";
 
 import {categories} from "../data/categories"
 import {cart} from "../data/cart"
-import {products} from "../data/products"
+import products from "../data/products";
 import {wishlist} from "../data/wishlist"
 
+
 class Product {
+
   state = {
-    allProducts: products,
+    allProducts: [],
     searchedProducts: [],
     products: [],
     product: {},
@@ -18,9 +20,14 @@ class Product {
     wishlist: wishlist,
   };
 
+  
   constructor() {
+    
+
+
     makeObservable(this, {
       state: observable,
+      fetchData:action,
       getCategories: action,
       getProducts: action,
       getProductsByCategories: action,
@@ -29,11 +36,25 @@ class Product {
       addToCart: action,
       addToWishlist: action,
       removeFromWishlist: action,
-
       setCategory: action,
       setProduct: action,
     });
   }
+
+  fetchData = async () => {
+    try {
+      // products fonksiyonunu çağırarak verileri al
+      const fetchedProducts = await products();
+      runInAction(() => {
+        // Verileri state'e at
+        this.state.allProducts = fetchedProducts;
+        console.log(Array.isArray(this.state.allProducts))
+      });
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      // Hata durumunu ele al veya gerekirse kullanıcıya bir bildirim göster
+    }
+  };
 
   createToast = message => {
     ToastAndroid.showWithGravityAndOffset(
@@ -70,7 +91,7 @@ class Product {
       this.state.searchedProducts = this.shuffle(this.state.allProducts);
     } else {
       this.state.searchedProducts = this.shuffle(
-        this.state.allProducts.filter(x => x.category === id),
+        this.state.allProducts.filter(x => x.Category === id),
       );
     }
   };
@@ -78,13 +99,34 @@ class Product {
   getSearchedProducts = text => {
     this.state.searchedProducts = this.shuffle(
       this.state.allProducts.filter(x =>
-        x.name.toLowerCase().includes(text.toLowerCase()),
+        x.Name.toLowerCase().includes(text.toLowerCase()),
       ),
     );
   };
 
-  getRandomProducts = () => {
-    return this.shuffle(this.state.allProducts.slice(0, 6));
+  getRandomProducts = async () => {
+    try {
+      const fetchedProducts = await products();
+      const shuffledProducts = this.shuffle(fetchedProducts.slice(0, 6));
+  
+      runInAction(() => {
+        this.state.allProducts = shuffledProducts;
+      });
+  
+      if (!Array.isArray(shuffledProducts) || shuffledProducts.length === 0) {
+        console.log("Array Boş veya Tanımsız");
+        runInAction(() => {
+          this.state.allProducts = [];
+        });
+      }
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      runInAction(() => {
+        this.state.allProducts = [];
+      });
+    }
+  
+    return this.state.allProducts;
   };
 
   setCategory = id => {

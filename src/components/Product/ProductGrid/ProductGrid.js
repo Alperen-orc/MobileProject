@@ -53,9 +53,9 @@ const ProductGrid = observer(({searchText, navigation, byCategory}) => {
               }}
               key={i}
               style={styles.sliderItem}>
-              <Image style={styles.sliderImg} source={{uri: x.imgs[0]}} />
-              <Text style={{fontFamily:"Poppins-SemiBold"}}>{x.name}</Text>
-              <Text style={{fontFamily:"Poppins-Regular"}}>${x.price}</Text>
+              <Image style={styles.sliderImg} source={{uri: x.Image[0]}} />
+              <Text style={{fontFamily:"Poppins-SemiBold"}}>{x.Name}</Text>
+              <Text style={{fontFamily:"Poppins-Regular"}}>${x.Price}</Text>
             </Pressable>
           ))}
           <View style={{height: 350}}></View>
