@@ -1,79 +1,54 @@
-import { Text, View, TextInput, ImageBackground, Button, KeyboardAvoidingView, Platform } from 'react-native';
-import styles from './Admin.styles';
-import InlineTextButton from '../../components/InlineTextButton';
-import React,{useState} from 'react';
+import React,{useState,useEffect} from "react";
+import { View,Text,Button,FlatList } from "react-native";
+import styles from "./Admin.styles"
+import { collection,getDocs } from "@firebase/firestore";
+import { db } from "../../database/firebase";
+import AdminProduct from "../../components/AdminProduct";
+import CreateButton from "../../components/CreateButton";
 
-export default function Login({ navigation }) {
-  const background = require("../../../assets/icons/admin_background.jpg");
 
 
-  const [name,setName]=useState("");
-  const [category,setCategory]=useState(0);
-  const [price,setPrice]=useState(0);
-  const [image,setImage]=useState([]);
-  const [description,setDescription]=useState("");
-  const [errorMessage, setErrorMessage]=useState("");
+const Admin=({navigation})=>{
 
-  let save = () => {
+  const [products, setProducts] = useState([]);
 
-         addDoc(collection(db,"Product"),{
-             Category:category,
-             Description:description,
-             Image:image,
-             Name:name,
-             Price:price,
-         }).then(()=>{
-             console.log("Data Submitted");
-         }).catch((error)=>{
-             console.log(error);
-         });
-  }
+  useEffect(() => {
+    const fetchData = async () => {
+      const querySnapshot = await getDocs(collection(db, 'Product'));
+      const productsData = [];
+      querySnapshot.forEach((doc) => {
+        productsData.push({ ...doc.data(), id: doc.id });
+      });
+      setProducts(productsData);
+    };
 
-  return (
-    <ImageBackground style={styles.imageContainer} source={background}>
-      <KeyboardAvoidingView 
-        style={styles.backgroundCover} 
-        behavior={Platform.OS === "ios" ? "padding" : null}
-        keyboardVerticalOffset={60}>
-        <Text style={[styles.lightText, styles.header]}>Create Product</Text>
-        <Text style={styles.errorText}>{errorMessage}</Text>
-        <TextInput 
-          style={[styles.textInput, styles.lightTextInput, styles.lightText]} 
-          placeholder='Name' 
-          placeholderTextColor="#BEBEBE"
-          value={name}
-          onChangeText={(name)=>{setName(name)}} />
-        <TextInput 
-          style={[styles.textInput, styles.lightTextInput, styles.lightText]} 
-          placeholder='Category' 
-          placeholderTextColor="#BEBEBE" 
-          secureTextEntry={true} 
-          value={category} 
-          onChangeText={(category)=>{setCategory(category)}} />
-          <TextInput 
-          style={[styles.textInput, styles.lightTextInput, styles.lightText]} 
-          placeholder='Price' 
-          placeholderTextColor="#BEBEBE"
-          value={price}
-          onChangeText={(price)=>{setPrice(price)}} />
-        <TextInput 
-          style={[styles.textInput, styles.lightTextInput, styles.lightText]} 
-          placeholder='Image' 
-          placeholderTextColor="#BEBEBE" 
-          secureTextEntry={true} 
-          value={image} 
-          onChangeText={(image)=>{setImage(image)}} />
-        <TextInput 
-          style={[styles.textInput, styles.lightTextInput, styles.lightText]} 
-          placeholder='Description' 
-          placeholderTextColor="#BEBEBE" 
-          secureTextEntry={true} 
-          value={description} 
-          onChangeText={(description)=>{setDescription(description)}} />
-        <Button title="Save" onPress={save} color="#f7b267" />
-      </KeyboardAvoidingView>
-    </ImageBackground>
-  );
+    fetchData();
+  }, []);
+
+
+const handleRemoveProduct = (productId) => {
+  // Silindiğinde state'i güncelle
+  setProducts((prevProducts) => prevProducts.filter((product) => product.id !== productId));
+};
+
+
+const renderProduct=({item})=>
+    <AdminProduct products={item} onRemove={handleRemoveProduct} navigation={navigation}></AdminProduct>
+
+const handleCreateProduct= () => {
+    navigation.navigate("CreateScreen");
+  };    
+
+    return(
+      <View>
+      <CreateButton onSelect={handleCreateProduct}></CreateButton>
+      <FlatList
+        data={products}
+        keyExtractor={(item) => item.id}
+        renderItem={renderProduct}
+      />
+    </View>
+    );
 }
 
-
+export default Admin

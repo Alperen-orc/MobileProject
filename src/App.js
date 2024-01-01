@@ -30,6 +30,8 @@ import Menu from './components/Menu';
 import Header from './components/Header';
 import Crud from './pages/Crud';
 import Admin from './pages/Admin';
+import Update from "./pages/Admin/Update"
+import Create from "./pages/Admin/Create"
 
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -177,6 +179,8 @@ const App = observer(() => {
               }}
               initialRouteName="OnboardingScreen">
               <Stack.Screen name="AdminScreen" component={Admin} />
+              <Stack.Screen name="CreateScreen" component={Create} />
+              <Stack.Screen name="UpdateScreen" component={Update} />
               <Stack.Screen name="OnboardingScreen" component={Tutorial} />
               <Stack.Screen name="SignUpScreen" component={SignUp} />
               <Stack.Screen name="LoginScreen" component={Login} />
