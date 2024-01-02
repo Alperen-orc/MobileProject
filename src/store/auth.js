@@ -4,6 +4,7 @@ import { ToastAndroid } from "react-native";
 class Auth {
     state = {
       isAuthenticated: false,
+      isAdmin:false,
       user: null,
     };
   
@@ -26,14 +27,22 @@ class Auth {
       );
     };
   
-    login = async data => {
-      try {
-        this.state.isAuthenticated = true;
-        this.createToast('Logged in successfully');
-      } catch (err) {
-        this.state.isAuthenticated = false;
-        this.createToast('Login failed');
+    login = async (email,password) => {
+      if(email==="alperen.oruc@ogr.sakarya.edu.tr"){
+        this.state.isAdmin = true;
+        this.state.isAuthenticated=true;
+        this.createToast('Welcome Admin');
       }
+      else{
+        try {
+          this.state.isAuthenticated = true;
+          this.createToast('Logged in successfully');
+        } catch (err) {
+          this.state.isAuthenticated = false;
+          this.createToast('Login failed');
+        }
+      }
+      
     };
   
     register = async data => {

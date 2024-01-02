@@ -84,7 +84,6 @@ const Product = observer(() => {
     return (
       <View>
         <ScrollView>
-          {/* <Header heading="Product" /> */}
   
           <Carousel
             data={product.Image}

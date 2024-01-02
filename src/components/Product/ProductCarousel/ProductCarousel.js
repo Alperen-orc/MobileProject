@@ -60,7 +60,7 @@ const ProductCarousel = observer(({navigation}) => {
             <View>
               <Text style={[styles.name,{fontFamily:"Poppins-Bold"}]}>{item.Name}</Text>
               <Text style={[styles.description,{fontFamily:"Poppins-Regular"}]}>
-                {item.description.slice(0, 200)}...
+                {item.Description.slice(0, 200)}...
               </Text>
             </View>
   

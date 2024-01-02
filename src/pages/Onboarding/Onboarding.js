@@ -23,8 +23,8 @@ const Tutorial = ({navigation}) => {
 
     return (
       <Onboarding
-        onSkip={() => navigation.navigate('AdminScreen')}
-        onDone={() => navigation.navigate('AdminScreen')}
+        onSkip={() => navigation.navigate('LoginScreen')}
+        onDone={() => navigation.navigate('LoginScreen')}
         pages={[
           {
             backgroundColor: '#fff',

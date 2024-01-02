@@ -26,7 +26,7 @@ const ProductSlider = ({ navigation }) => {
 
   useEffect(() => {
     fetchData();
-  }, [fetchData, data]); // data bağımlılığı eklendi
+  }, [fetchData]); // data bağımlılığı eklendi
 
 
   const [fontsLoaded, fontError] = useFonts({

@@ -82,8 +82,8 @@ class Product {
   };
 
   getProducts = async () => {
-    this.state.products = this.shuffle(products);
-    this.state.allProducts = this.shuffle(products);
+    this.state.products = this.shuffle(await products());
+    this.state.allProducts = this.shuffle(await products());
   };
 
   getProductsByCategories = async id => {

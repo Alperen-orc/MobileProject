@@ -8,6 +8,7 @@ import {auth} from "../../database/firebase"
 import { signInWithEmailAndPassword,onAuthStateChanged } from "firebase/auth";
 
 import { faUser,faLock } from "@fortawesome/free-solid-svg-icons";
+import { err } from "react-native-svg";
 
 const Login = ({navigation}) => {
     let [errorMessage, setErrorMessage] = useState("");
@@ -16,22 +17,24 @@ const Login = ({navigation}) => {
   
     let login = () => {
       if (email !== "" && password !== "") {
-        AuthStore.login({email: email, password: password});
         signInWithEmailAndPassword(auth, email, password)
           .then((userCredential) => {
-            const user = userCredential.user;
-            if (user.email === 'alperen.oruc@ogr.sakarya.edu.tr' && password === 'b201210047') {
-              navigation.navigate("AdminScreen", { user: user });
+            AuthStore.login(email,password)
+            console.log("User Info:",userCredential.user)
+            if (userCredential.user.email === 'alperen.oruc@ogr.sakarya.edu.tr') {
+              console.log("Admin ekranına yönlendiriliyor")
+              navigation.navigate("AdminScreen");
             } else {
               // Diğer durumlar için normal yönlendirme
-              navigation.navigate("Main", { user: user });
+              console.log("Main ekranına yönlendiriliyor")
+              navigation.navigate("Main", { user: userCredential.user });
             }
             setErrorMessage("");
             setEmail("");
             setPassword("");
           })
           .catch((error) => {
-
+            console.error("Giris Hatası:",error)
             setErrorMessage(error.message)
           });
       } else {

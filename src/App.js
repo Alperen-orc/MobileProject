@@ -144,13 +144,31 @@ const App = observer(() => {
   const [openMenu, setOpenMenu] = useState(false);
 
   const {
-    state: {isAuthenticated},
+    state: {isAuthenticated,isAdmin},
   } = AuthStore;
 
   return (
     <>
       {isAuthenticated ? (
         <>
+        
+        {isAdmin?(
+          <>
+          <NavigationContainer ref={navigationRef}>
+              <Stack.Navigator
+                screenOptions={{
+                  headerShown: false,
+                }}
+                initialRouteName="AdminScreen">
+              <Stack.Screen name="AdminScreen" component={Admin} />
+              <Stack.Screen name="CreateScreen" component={Create} />
+              <Stack.Screen name="UpdateScreen" component={Update} /> 
+              </Stack.Navigator>
+            </NavigationContainer>
+          </>  
+
+        ):(
+          <>
           <SideMenu menu={menu} isOpen={openMenu} autoClosing={true}>
             <Header setOpenMenu={setOpenMenu} navigationRef={navigationRef} />
             <NavigationContainer ref={navigationRef}>
@@ -159,7 +177,7 @@ const App = observer(() => {
                   headerShown: false,
                 }}
                 initialRouteName="Main">
-                {/* <Stack.Screen name="Main" component={Tabs} /> */}
+                <Stack.Screen name="Main" component={Tabs} />
                 <Stack.Screen name='DashboardScreen' component={Dashboard} options={{headerShown:false}} ></Stack.Screen >
                 <Stack.Screen name='WishlistScreen' component={Wishlist} options={{headerShown:false}} ></Stack.Screen >
                 <Stack.Screen name='CartScreen' component={Cart} options={{headerShown:false}} ></Stack.Screen >
@@ -169,6 +187,9 @@ const App = observer(() => {
               </Stack.Navigator>
             </NavigationContainer>
           </SideMenu>
+          </>
+        )}
+          
         </>
       ) : (
         <>
@@ -178,13 +199,13 @@ const App = observer(() => {
                 headerShown: false,
               }}
               initialRouteName="OnboardingScreen">
-              <Stack.Screen name="AdminScreen" component={Admin} />
-              <Stack.Screen name="CreateScreen" component={Create} />
-              <Stack.Screen name="UpdateScreen" component={Update} />
               <Stack.Screen name="OnboardingScreen" component={Tutorial} />
               <Stack.Screen name="SignUpScreen" component={SignUp} />
               <Stack.Screen name="LoginScreen" component={Login} />
-              {/* <Stack.Screen name="Main" component={Tabs} /> */}
+              <Stack.Screen name="AdminScreen" component={Admin} />
+              <Stack.Screen name="CreateScreen" component={Create} />
+              <Stack.Screen name="UpdateScreen" component={Update} /> 
+              <Stack.Screen name="Main" component={Tabs} />
             </Stack.Navigator>
           </NavigationContainer>
         </>
