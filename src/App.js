@@ -179,6 +179,7 @@ const App = observer(() => {
                 initialRouteName="Main">
                 <Stack.Screen name="Main" component={Tabs} />
                 <Stack.Screen name='DashboardScreen' component={Dashboard} options={{headerShown:false}} ></Stack.Screen >
+                <Stack.Screen name='ProductScreen' component={Product} options={{headerShown:false}} ></Stack.Screen >
                 <Stack.Screen name='WishlistScreen' component={Wishlist} options={{headerShown:false}} ></Stack.Screen >
                 <Stack.Screen name='CartScreen' component={Cart} options={{headerShown:false}} ></Stack.Screen >
                 <Stack.Screen name='OrderScreen' component={Order} options={{headerShown:false}}></Stack.Screen>

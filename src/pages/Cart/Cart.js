@@ -45,7 +45,8 @@ const Cart = observer(({navigation}) => {
             </ScrollView>
   
             <TouchableOpacity
-              style={{...styles.primaryBtn, bottom: 0, position: 'absolute'}}>
+              style={{...styles.primaryBtn, bottom: 0, position: 'absolute'}}
+              onPress={() => navigation.navigate('OrderScreen')}>
               <Text style={{color: '#fff', fontFamily: 'Poppins-Regular'}}>
                 Confirm Order
               </Text>
@@ -112,15 +113,15 @@ const Cart = observer(({navigation}) => {
           <Image
             style={{width: 100, height: 150, borderRadius: 5}}
             source={{
-              uri: product.imgs[0],
+              uri: product.Image[0],
             }}
           />
         </Pressable>
         <View style={{flex: 1}}>
-          <Text style={[styles.cartName,{fontFamily:"Poppins-SemiBold"}]}>{product.name}</Text>
+          <Text style={[styles.cartName,{fontFamily:"Poppins-SemiBold"}]}>{product.Name}</Text>
   
           <Text style={[styles.cartPrice,{fontFamily:"Poppins-Regular"}]}>
-            ${product.price * quantity ? product.price * quantity : ''}
+            ${product.Price * quantity ? product.Price * quantity : ''}
           </Text>
         </View>
   
