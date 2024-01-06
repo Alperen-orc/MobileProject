@@ -1,10 +1,10 @@
-import React from "react";
+import React,{useState} from "react";
 import { View,Text,Image,ScrollView,TouchableOpacity } from "react-native";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faAddressCard,faPhone,faUser } from "@fortawesome/free-solid-svg-icons";
 import { ProductStore } from "../../store/product";
 import { toJS } from 'mobx';
-
+import LottieView from "lottie-react-native";
 
 const todayString = new Date().toISOString().split('T')[0];
 const todayDate = new Date(todayString);
@@ -17,6 +17,19 @@ const {
 } = ProductStore;
 
 const copiedCart = toJS(cart);
+
+const [isAnimationPlaying, setIsAnimationPlaying] = useState(false);
+
+const playAnimation = () => {
+  console.log("Animation will play")
+  setIsAnimationPlaying(true);
+};
+
+const onAnimationFinish = () => {
+  console.log("Animation finished")
+  setIsAnimationPlaying(false);
+};
+
     return (
      <View style={{flex:1}}>
           <View style={{padding: 10, backgroundColor: '#fff'}}>
@@ -107,18 +120,31 @@ const copiedCart = toJS(cart);
             </ScrollView>
   
             <TouchableOpacity
-              style={{backgroundColor: "#9551E8",
-                padding: 15,
-                width: 200,
-                alignItems: 'center',
-                alignSelf: 'center',
-                borderRadius: 50,
-                marginBottom: 20, bottom: 0, position: 'absolute'}}
-              onPress={() => navigation.navigate('DashboardScreen')}>
-              <Text style={{color: '#fff', fontFamily: 'Poppins-Regular'}}>
-                Pay
-              </Text>
-            </TouchableOpacity>
+        style={{
+          backgroundColor: "#9551E8",
+          padding: 15,
+          width: 200,
+          alignItems: "center",
+          alignSelf: "center",
+          borderRadius: 50,
+          marginBottom: 20,
+          bottom: 0,
+          position: "absolute",
+        }}
+        onPress={playAnimation}
+      >
+        <Text style={{ color: "#fff", fontFamily: "Poppins-Regular" }}>
+          Pay
+        </Text>
+      </TouchableOpacity>
+
+      {isAnimationPlaying && (
+        <LottieView
+          source={require("../../../assets/Error.json")}
+          autoPlay
+          onAnimationFinish={onAnimationFinish}
+        />
+      )}
      </View>
     );
   };

@@ -32,6 +32,7 @@ import Crud from './pages/Crud';
 import Admin from './pages/Admin';
 import Update from "./pages/Admin/Update"
 import Create from "./pages/Admin/Create"
+import Notification from './pages/Admin/Notification';
 
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -163,6 +164,7 @@ const App = observer(() => {
               <Stack.Screen name="AdminScreen" component={Admin} />
               <Stack.Screen name="CreateScreen" component={Create} />
               <Stack.Screen name="UpdateScreen" component={Update} /> 
+              <Stack.Screen name="NotificationScreen" component={Notification} /> 
               </Stack.Navigator>
             </NavigationContainer>
           </>  

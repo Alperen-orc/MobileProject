@@ -15,6 +15,7 @@ const Login = ({navigation}) => {
     let [email, setEmail] = useState('');
     let [password, setPassword] = useState('');
   
+
     let login = () => {
       if (email !== "" && password !== "") {
         signInWithEmailAndPassword(auth, email, password)
@@ -41,7 +42,7 @@ const Login = ({navigation}) => {
         setErrorMessage("Please enter an email and password");
       }
     }
-  
+
     return (
       <View style={styles.container}>
         <View style={{marginVertical: 30}}>

@@ -17,7 +17,7 @@ const AdminProduct=({navigation,products,onRemove})=>{
         })
     }
 
-    const handleProductSelect= id => {
+    const handleProductSelect= (id) => {
         navigation.navigate("UpdateScreen",{id});
     };
 
