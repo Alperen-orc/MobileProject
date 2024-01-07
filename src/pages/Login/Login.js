@@ -60,20 +60,20 @@ const Login = ({navigation}) => {
               color: '#000',
               marginBottom: 20,
             }}>
-            Sign in
+            Giriş Yap
           </Text>
   
           <Input
             text={email}
             setText={setEmail}
             icon={faUser}
-            placeholder="Enter email"
+            placeholder="Email Giriniz"
           />
   
           <Input
             text={password}
             setText={setPassword}
-            placeholder="Enter password"
+            placeholder="Şifre Giriniz"
             password={true}
             icon={faLock}
           />
@@ -87,12 +87,12 @@ const Login = ({navigation}) => {
                 textDecorationColor: 'gray',
                 textDecorationLine: 'underline',
               }}>
-              Create an account
+              Hesap Oluştur
             </Text>
           </Pressable>
   
           <TouchableOpacity style={styles.primaryBtn} onPress={() => login()}>
-            <Text style={{...styles.btnTextPrimary, color: '#fff'}}>Submit</Text>
+            <Text style={{...styles.btnTextPrimary, color: '#fff'}}>Giriş</Text>
           </TouchableOpacity>
         </ScrollView>
       </View>

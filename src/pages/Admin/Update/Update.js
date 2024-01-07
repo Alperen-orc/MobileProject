@@ -50,7 +50,7 @@ export default function Update({ navigation }) {
           Name: name,
           Price: price,
         });
-        console.log("Data Updated");
+        console.log("Ürün Güncellendi");
       } catch (error) {
         console.log(error);
         setErrorMessage("Error updating data");
@@ -78,29 +78,29 @@ export default function Update({ navigation }) {
         <Text style={styles.errorText}>{errorMessage}</Text>
         <TextInput
           style={[styles.textInput, styles.lightTextInput, styles.lightText]}
-          placeholder='Name'
+          placeholder='İsim'
           placeholderTextColor="#BEBEBE"
           value={name}
           onChangeText={(name) => { setName(name) }} />
         <TextInput
           style={[styles.textInput, styles.lightTextInput, styles.lightText]}
-          placeholder='Category'
+          placeholder='Kategori'
           placeholderTextColor="#BEBEBE"
           value={category ? category.toString() : ''}
           onChangeText={(category) => { setCategory(parseInt(category) || 0) }} />
         <TextInput
           style={[styles.textInput, styles.lightTextInput, styles.lightText]}
-          placeholder='Price'
+          placeholder='Fiyat'
           placeholderTextColor="#BEBEBE"
           value={price ? price.toString() : ''}
           onChangeText={(price) => { setPrice(parseFloat(price) || 0) }} />
         <TextInput
           style={[styles.textInput, styles.lightTextInput, styles.lightText]}
-          placeholder='Description'
+          placeholder='Açıklama'
           placeholderTextColor="#BEBEBE"
           value={description}
           onChangeText={(description) => { setDescription(description) }} />
-        <Button title="Save" onPress={save} color="#f7b267" />
+        <Button title="Güncelle" onPress={save} color="#f7b267" />
       </KeyboardAvoidingView>
     </ImageBackground>
   );

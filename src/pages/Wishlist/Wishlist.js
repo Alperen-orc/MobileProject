@@ -44,7 +44,7 @@ const Wishlist = observer(({navigation}) => {
                 fontSize: 26,
                 color: '#000',
               }}>
-              Your Wishlist is Empty
+              Favorileriniz Boş
             </Text>
             <Text
               style={{
@@ -53,7 +53,7 @@ const Wishlist = observer(({navigation}) => {
                 fontSize: 12,
                 color: '#000',
               }}>
-              Tap the heart button to start saving your favourite items
+              Kalbe basın ve favorilerinize ekleyin
             </Text>
             <TouchableOpacity
               style={styles.secondaryBtn}
@@ -64,7 +64,7 @@ const Wishlist = observer(({navigation}) => {
                   fontSize: 16,
                   fontFamily: 'Poppins-SemiBold',
                 }}>
-                Explore
+                Keşfet
               </Text>
             </TouchableOpacity>
           </View>
@@ -115,7 +115,7 @@ const Wishlist = observer(({navigation}) => {
               marginBottom: 0,
             }}>
             <Text style={{color: '#fff', fontFamily: 'Poppins-Regular'}}>
-              Add to Cart
+              Sepete Ekle
             </Text>
           </TouchableOpacity>
         </View>

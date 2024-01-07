@@ -35,11 +35,11 @@ const onAnimationFinish = () => {
           <View style={{padding: 10, backgroundColor: '#fff'}}>
       <Text
         style={{fontFamily: 'Poppins-SemiBold', fontSize: 22, color: '#000'}}>
-        Order Information
+        Sipariş Bilgileri
       </Text>
       <Text
         style={{fontFamily: 'Poppins-Regular', fontSize: 16, color: '#000'}}>
-        Delivery to
+        Teslimat Noktası
       </Text>
 
       <View
@@ -134,7 +134,7 @@ const onAnimationFinish = () => {
         onPress={playAnimation}
       >
         <Text style={{ color: "#fff", fontFamily: "Poppins-Regular" }}>
-          Pay
+          Ödeme
         </Text>
       </TouchableOpacity>
 
@@ -162,7 +162,7 @@ const onAnimationFinish = () => {
         justifyContent: 'space-between',
       }}>
       <Text style={{fontFamily: 'Poppins-SemiBold', color: '#000'}}>
-        Delivery Time
+        Teslimat Zamanı
       </Text>
       <Text style={{fontFamily: 'Poppins-Regular', color: '#000'}}>
       {currentTimeString}
@@ -214,7 +214,7 @@ const onAnimationFinish = () => {
             fontSize: 14,
             color: '#000',
           }}>
-          Subtotal ({quantity})
+          Ürün Adedi ({quantity})
         </Text>
         <Text
           style={{
@@ -237,7 +237,7 @@ const onAnimationFinish = () => {
             fontSize: 14,
             color: '#000',
           }}>
-          Shipping Fee
+          Vergi
         </Text>
         <Text
           style={{
@@ -260,7 +260,7 @@ const onAnimationFinish = () => {
             fontSize: 14,
             color: '#000',
           }}>
-          Total
+          Toplam
         </Text>
         <Text
           style={{

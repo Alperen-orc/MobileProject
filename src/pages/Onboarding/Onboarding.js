@@ -37,9 +37,9 @@ const Tutorial = ({navigation}) => {
             image: (
               <Image source={require('../../../assets/icons/add_your_info.png')} />
             ),
-            title: 'Create an account',
+            title: 'Hesap Oluşturun',
             subtitle:
-              'Et adipisicing do enim duis amet id culpa. Commodo adipisicing.',
+              'Alışverişin Keyfini Çıkarın!',
           },
           {
             backgroundColor: '#fff',
@@ -52,9 +52,9 @@ const Tutorial = ({navigation}) => {
             image: (
               <Image source={require('../../../assets/icons/add_to_cart.png')} />
             ),
-            title: 'Add to Cart',
+            title: 'Sepete Ekle',
             subtitle:
-              'Ipsum officia eu amet Lorem amet pariatur culpa reprehenderit esse irure.',
+              'Beğendiğiniz Ürünleri Sepetinize Ekleyin',
           },
           {
             backgroundColor: '#fff',
@@ -65,9 +65,9 @@ const Tutorial = ({navigation}) => {
               fontFamily: 'Poppins-Regular',
             },
             image: <Image source={require('../../../assets/icons/payment.png')} />,
-            title: 'Payment',
+            title: 'Ödeme',
             subtitle:
-              'Nisi eiusmod officia amet veniam veniam ex laborum duis sit commodo.',
+              'Rahatlıkla Ödemelerinizi Gerçekleştirin.',
           },
         ]}
       />

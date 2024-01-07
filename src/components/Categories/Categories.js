@@ -25,7 +25,7 @@ const Categories = observer(() => {
                 ? styles.categoryTextSelected
                 : styles.categoryText
             }>
-            All
+            Hepsi
           </Text>
         </Pressable>
         {categories.map((x, i) => (

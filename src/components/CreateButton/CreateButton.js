@@ -7,7 +7,7 @@ const CreateButton=({onSelect})=>{
         <TouchableWithoutFeedback onPress={onSelect}>
         <View style={styles.main_container}>
         <View style={styles.container}>
-            <Text style={styles.text}>Add Product</Text>
+            <Text style={styles.text}>Ürün Ekle</Text>
         </View>
         </View>
         </TouchableWithoutFeedback>

@@ -48,7 +48,7 @@ const Cart = observer(({navigation}) => {
               style={{...styles.primaryBtn, bottom: 0, position: 'absolute'}}
               onPress={() => navigation.navigate('OrderScreen')}>
               <Text style={{color: '#fff', fontFamily: 'Poppins-Regular'}}>
-                Confirm Order
+                Siparişi Tamamla
               </Text>
             </TouchableOpacity>
           </>
@@ -71,7 +71,7 @@ const Cart = observer(({navigation}) => {
                 fontSize: 26,
                 color: '#000',
               }}>
-              Your Cart is Empty
+              Sepetiniz Boş
             </Text>
             <Text
               style={{
@@ -80,7 +80,7 @@ const Cart = observer(({navigation}) => {
                 fontSize: 12,
                 color: '#000',
               }}>
-              Your shopping bag has abandonment issues
+              Sepetinizde Bazı Ürünler Eksilmiş
             </Text>
             <TouchableOpacity
               style={styles.secondaryBtn}
@@ -91,7 +91,7 @@ const Cart = observer(({navigation}) => {
                   fontSize: 16,
                   fontFamily: 'Poppins-SemiBold',
                 }}>
-                Continue shopping
+                Alışverişe Devam Edin
               </Text>
             </TouchableOpacity>
           </View>

@@ -36,39 +36,39 @@ export default function Login({ navigation }) {
         style={styles.backgroundCover} 
         behavior={Platform.OS === "ios" ? "padding" : null}
         keyboardVerticalOffset={60}>
-        <Text style={[styles.lightText, styles.header]}>Create Product</Text>
+        <Text style={[styles.lightText, styles.header]}>Ürün Ekle</Text>
         <Text style={styles.errorText}>{errorMessage}</Text>
         <TextInput 
           style={[styles.textInput, styles.lightTextInput, styles.lightText]} 
-          placeholder='Name' 
+          placeholder='İsim' 
           placeholderTextColor="#BEBEBE"
           value={name}
           onChangeText={(name)=>{setName(name)}} />
         <TextInput 
           style={[styles.textInput, styles.lightTextInput, styles.lightText]} 
-          placeholder='Category' 
+          placeholder='Kategori' 
           placeholderTextColor="#BEBEBE" 
           value={category} 
           onChangeText={(category)=>{setCategory(category)}} />
           <TextInput 
           style={[styles.textInput, styles.lightTextInput, styles.lightText]} 
-          placeholder='Price' 
+          placeholder='Fiyat' 
           placeholderTextColor="#BEBEBE"
           value={price}
           onChangeText={(price)=>{setPrice(price)}} />
         <TextInput 
           style={[styles.textInput, styles.lightTextInput, styles.lightText]} 
-          placeholder='Image' 
+          placeholder='Resim' 
           placeholderTextColor="#BEBEBE" 
           value={image} 
           onChangeText={(image)=>{setImage(image)}} />
         <TextInput 
           style={[styles.textInput, styles.lightTextInput, styles.lightText]} 
-          placeholder='Description' 
+          placeholder='Açıklama' 
           placeholderTextColor="#BEBEBE" 
           value={description} 
           onChangeText={(description)=>{setDescription(description)}} />
-        <Button title="Save" onPress={save} color="#f7b267" />
+        <Button title="Kaydet" onPress={save} color="#f7b267" />
       </KeyboardAvoidingView>
     </ImageBackground>
   );

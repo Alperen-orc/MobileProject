@@ -41,33 +41,33 @@ const SignUp = ({navigation}) => {
               color: '#000',
               marginBottom: 20,
             }}>
-            Create an account
+            Hesap Oluşturun
           </Text>
   
           <Input
             text={name}
             setText={setName}
-            placeholder="Enter name"
+            placeholder="İsim Giriniz"
             icon={faUser}
           />
           <Input
             text={email}
             setText={setEmail}
-            placeholder="Enter email"
+            placeholder="Email Giriniz"
             icon={faEnvelope}
           />
           <Input
             password={true}
             text={password}
             setText={setPassword}
-            placeholder="Enter password"
+            placeholder="Şifre Giriniz"
             icon={faLock}
           />
           <Input
             password={true}
             text={confirmPassword}
             setText={setconfirmPassword}
-            placeholder="Enter password"
+            placeholder="Şifre Tekrarı"
             icon={faLock}
           />
   
@@ -80,7 +80,7 @@ const SignUp = ({navigation}) => {
                 textDecorationColor: 'gray',
                 textDecorationLine: 'underline',
               }}>
-              Already have an account
+              Bir hesabınız var mı?
             </Text>
           </Pressable>
   
@@ -91,7 +91,7 @@ const SignUp = ({navigation}) => {
               // navigation.navigate('Dashboard', {parama: [], auth: true});
               signUp();
             }}>
-            <Text style={{color: '#fff'}}>Submit</Text>
+            <Text style={{color: '#fff'}}>Kayıt Ol</Text>
           </TouchableOpacity>
         </ScrollView>
       </View>

@@ -33,7 +33,7 @@ const Menu = ({navigationRef}) => {
             style={styles.menuOption}
             onPress={() => navigationRef.navigate('DashboardScreen')}>
             <FontAwesomeIcon icon={faHome} />
-            <Text style={styles.menuText}>Home</Text>
+            <Text style={styles.menuText}>Ana Ekran</Text>
             <FontAwesomeIcon color="#ccc" icon={faChevronRight} />
           </TouchableOpacity>
   
@@ -41,7 +41,7 @@ const Menu = ({navigationRef}) => {
             style={styles.menuOption}
             onPress={() => navigationRef.navigate('WishlistScreen')}>
             <FontAwesomeIcon icon={faHeart} />
-            <Text style={styles.menuText}>Wishlist</Text>
+            <Text style={styles.menuText}>İsteklerim</Text>
             <FontAwesomeIcon color="#ccc" icon={faChevronRight} />
           </TouchableOpacity>
   
@@ -49,7 +49,7 @@ const Menu = ({navigationRef}) => {
             style={styles.menuOption}
             onPress={() => navigationRef.navigate('CartScreen')}>
             <FontAwesomeIcon icon={faCartShopping} />
-            <Text style={styles.menuText}>Cart</Text>
+            <Text style={styles.menuText}>Sepetim</Text>
             <FontAwesomeIcon color="#ccc" icon={faChevronRight} />
           </TouchableOpacity>
   
@@ -57,15 +57,15 @@ const Menu = ({navigationRef}) => {
             style={styles.menuOption}
             onPress={() => navigationRef.navigate('CategoryScreen')}>
             <FontAwesomeIcon icon={faBoxes} />
-            <Text style={styles.menuText}>Categories</Text>
+            <Text style={styles.menuText}>Kategoriler</Text>
             <FontAwesomeIcon color="#ccc" icon={faChevronRight} />
           </TouchableOpacity>
   
           <TouchableOpacity
             style={styles.menuOption}
-            onPress={() => navigationRef.navigate('CrudScreen')}>
+            onPress={() => navigationRef.navigate('OrdersScreen')}>
             <FontAwesomeIcon icon={faCheckCircle} />
-            <Text style={styles.menuText}>Orders</Text>
+            <Text style={styles.menuText}>Siparişlerim</Text>
             <FontAwesomeIcon color="#ccc" icon={faChevronRight} />
           </TouchableOpacity>
         </View>

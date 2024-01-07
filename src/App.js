@@ -93,7 +93,7 @@ const Tabs=(navigation)=>{
                   color: '#000',
                   fontSize: 10,
                 }}>
-                Home
+                Ana Ekran
               </Text>
             ),
             tabBarIcon: ({focused}) => (
@@ -110,13 +110,14 @@ const Tabs=(navigation)=>{
             ),
           }}></Tab.Screen>
         <Tab.Screen name='Wishlist' component={CartStack} options={{
+          headerShown:false,
             tabBarLabel: ({focused, color, size}) => (
               <Text
                 style={{
                   color: '#000',
                   fontSize: 10,
                 }}>
-                Wishlist
+                Favoriler
               </Text>
             ),
             tabBarIcon: ({focused}) => (
@@ -124,13 +125,14 @@ const Tabs=(navigation)=>{
             ),
           }}></Tab.Screen>
         <Tab.Screen name='Profile' component={ProfileStack} options={{
+          headerShown:false,
             tabBarLabel: ({focused, color, size}) => (
               <Text
                 style={{
                   color: '#000',
                   fontSize: 10,
                 }}>
-                Profile
+                Profil
               </Text>
             ),
             tabBarIcon: ({focused}) => (
@@ -185,7 +187,7 @@ const App = observer(() => {
                 <Stack.Screen name='WishlistScreen' component={Wishlist} options={{headerShown:false}} ></Stack.Screen >
                 <Stack.Screen name='CartScreen' component={Cart} options={{headerShown:false}} ></Stack.Screen >
                 <Stack.Screen name='OrderScreen' component={Order} options={{headerShown:false}}></Stack.Screen>
-                <Stack.Screen name='CrudScreen' component={Crud} options={{headerShown:false}}></Stack.Screen>
+                <Stack.Screen name='OrdersScreen' component={Orders} options={{headerShown:false}}></Stack.Screen>
                 <Stack.Screen name='CategoryScreen' component={Category} options={{headerShown:false}} ></Stack.Screen >
               </Stack.Navigator>
             </NavigationContainer>
